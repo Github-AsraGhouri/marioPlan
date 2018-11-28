@@ -33,7 +33,9 @@ const mapStateToProps = (state) => {
   return {
     projects: state.firestore.ordered.projects,
     auth: state.firebase.auth,
+    //to get them ordered 
     notifications: state.firestore.ordered.notifications
+
   }
 }
 
@@ -41,6 +43,8 @@ export default compose(
   connect(mapStateToProps),
   firestoreConnect([
     { collection: 'projects', orderBy: ['createdAt', 'desc'] },
+    //limit property, and notifications from firebase to our database and redux store as well
+    
     {collection: 'notifications', limit: 3, orderBy: ['time', 'desc']}
   ])
 )(Dashboard)

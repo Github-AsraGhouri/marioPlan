@@ -5,7 +5,7 @@ admin.initializeApp(functions.config().firebase);
 exports.helloWorld = functions.https.onRequest((request, response) => {
     response.send("hello, ninja!")
 })
-const createNotification = ((notification) => {
+const createNotification = (notification => {
   return admin.firestore().collection('notifications')
     .add(notification)
     .then(doc => console.log('notification added', doc));
@@ -26,16 +26,18 @@ exports.projectCreated = functions.firestore
     return createNotification(notification);
 
 });
+//its will triggered when new user signing up grabing that the new user for real time notifications
 exports.userJoined = functions.auth.user()
 .onCreate(user => {
     return admin.firestore().collection('users')
     .doc(user.uid).get().then(doc => {
-        const newUser = doc.data();
+        const newUser = doc.data(); //to get data from the doc
         const notification ={
             content : 'joined the party',
-            user : `${newUser.firstName} ${newUser.lastName}`,
+            user : `${newUser.firstName} ${newUser.lastName}`,//property that stor in the firebase user
             time : admin.firestore.FieldValue.serverTimestamp()
         }
+        //passing notification 
         return createNotification(notification);
 
     })
