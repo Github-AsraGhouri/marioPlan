@@ -1,7 +1,7 @@
 html{
   min-height: 100%;
 }
-body {
+/* body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
@@ -10,6 +10,9 @@ body {
   background-position: bottom;
   background-color: #95e8f3;
   min-height: 100%;
+} */
+.waves-effect.waves-light.btn-small{
+  margin-top: 0px;
 }
 form{
   padding: 20px;

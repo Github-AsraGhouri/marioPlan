@@ -1,8 +1,4 @@
 {
-  "firestore": {
-    "rules": "JavaScript",
-    "indexes": "y"
-  },
   "hosting": {
     "public": "dist",
     "ignore": [
